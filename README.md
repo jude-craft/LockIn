@@ -349,20 +349,24 @@ dependencies {
 git clone <your-repository-url>
 cd lock_in
 ```
+### 2.Updating cloned Repository
+```bash
+git pull origin <branch-name>
+```
 
-### 2. Install Dependencies
+### 3. Install Dependencies
 ```bash
 flutter pub get
 ```
 
-### 3. Verify Firebase Setup
+### 4. Verify Firebase Setup
 Check that you have:
 - ✅ `google-services.json` in `android/app/`
 - ✅ `lib/firebase_options.dart` exists
 - ✅ Build.gradle files are configured
 - ✅ Email/Password authentication is enabled in Firebase Console
 
-### 4. Run the App
+### 5. Run the App
 ```bash
 # Check connected devices
 flutter devices
@@ -422,7 +426,7 @@ android/
 ```bash
 # Update Gradle wrapper
 cd android
-./gradlew wrapper --gradle-version=7.5
+./gradlew wrapper --gradle-version=8.7
 ```
 
 #### 3. "Execution failed for task ':app:processDebugGoogleServices'"
