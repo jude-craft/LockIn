@@ -19,6 +19,17 @@ A modern, secure Flutter authentication application with Firebase integration, f
 - 🎨 Modern card-based layout
 - 👤 User profile section
 - 🔔 Notifications (coming soon)
+- 📱 Bottom navigation bar with 3 screens
+
+### Account Screen
+- 👤 User profile with avatar and initials
+- 📧 Display user email and account info
+- 📅 Member since and last sign-in dates
+- ✅ Email verification status with action button
+- 🔐 Password reset functionality
+- ⚙️ Account settings (Profile, Notifications, Appearance)
+- 🔒 Security settings (2FA coming soon)
+- ⚠️ Danger zone (Delete account, Logout)
 
 ### Password Security Requirements
 - ✅ Minimum 8 characters
@@ -376,8 +387,7 @@ lib/
     │   └── auth_repository.dart        # Firebase authentication logic
     ├── screens/
     │   ├── auth_screen.dart            # Login & Sign up screen
-    │   ├── home_screen.dart            # Dashboard with features
-    │   └── profile_screen.dart         # Profile screen
+    │   └── home_screen.dart            # Dashboard with features
     ├── widgets/
     │   ├── password_strength_indicator.dart  # Password strength UI
     │   └── custom_text_field.dart      # Reusable text fields
@@ -412,7 +422,7 @@ android/
 ```bash
 # Update Gradle wrapper
 cd android
-./gradlew wrapper --gradle-version=8.7
+./gradlew wrapper --gradle-version=7.5
 ```
 
 #### 3. "Execution failed for task ':app:processDebugGoogleServices'"
@@ -620,7 +630,11 @@ Contributions are welcome! Please follow these steps:
 
 ---
 
+## 📄 License
 
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
 
 ## 🆘 Support
 
@@ -638,10 +652,12 @@ If you encounter any issues:
 ## 👨‍💻 Author
 
 **Your Name**
-- GitHub: [@jude-craft](https://github.com/jude-craft)
+- GitHub: [jude-craft](https://github.com/jude-craft)
 - Email: derekjude254@gmail.com
 
 
 
+---
 
 **Built with ❤️ using Flutter and Firebase**
+
