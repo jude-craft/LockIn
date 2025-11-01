@@ -4,6 +4,14 @@ A modern, secure Flutter authentication application with Firebase integration, f
 
 ## 📱 Features
 
+### Splash Screen
+- 🎨 Beautiful gradient background
+- ✨ Smooth animations (fade, scale, slide)
+- 🔄 Rotating lock icon with pulse effect
+- 🔐 Auto-detects login state
+- ⚡ Smart navigation to Home or Auth screen
+- 🎭 Multiple design options included
+
 ### Authentication
 - 🔐 Email/Password authentication with Firebase
 - 🔒 Strong password validation with real-time feedback
