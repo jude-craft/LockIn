@@ -310,7 +310,16 @@ class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateM
   Widget _buildGoogleButton() {
     return OutlinedButton.icon(
       onPressed: () {
-        _showSnackBar('Google Sign In coming soon!', isError: false);
+        _authRepository.signInWithGoogle().then((result) {
+          if (result.isSuccess) {
+            _showSnackBar('Signed in with Google!', isError: false);
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (_) => const HomeScreen()),
+            );
+          } else {
+            _showSnackBar(result.error ?? 'Google sign-in failed', isError: true);
+          }
+        });
       },
       icon: Image.network(
         'https://www.google.com/favicon.ico',

@@ -1,8 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 /// Repository class that handles all authentication operations
 class AuthRepository {
   final FirebaseAuth _firebaseAuth;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
 
   AuthRepository({FirebaseAuth? firebaseAuth})
       : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance;
@@ -57,9 +59,45 @@ class AuthRepository {
     }
   }
 
+  /// 🔹 Sign in with Google
+  Future<AuthResult> signInWithGoogle() async {
+    try {
+      // Trigger Google Sign-In flow
+      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+
+      if (googleUser == null) {
+        // User cancelled sign-in
+        return AuthResult.failure(error: 'Google sign-in was cancelled.');
+      }
+
+      // Get the authentication details from the request
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+
+      // Create a new credential
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      // Sign in to Firebase with the Google credential
+      final userCredential =
+          await _firebaseAuth.signInWithCredential(credential);
+
+      return AuthResult.success(user: userCredential.user);
+    } on FirebaseAuthException catch (e) {
+      return AuthResult.failure(error: _handleAuthException(e));
+    } catch (e) {
+      return AuthResult.failure(
+        error: 'Google sign-in failed. Please try again.',
+      );
+    }
+  }
+
   /// Sign out the current user
   Future<void> signOut() async {
     await _firebaseAuth.signOut();
+    await _googleSignIn.signOut();
   }
 
   /// Send password reset email
